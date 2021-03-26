@@ -23,6 +23,7 @@
         :items="books"
         :items-per-page="10"
         :search="search"
+        :divider="true"
       >
       </v-data-table>
     </v-card>
@@ -36,17 +37,18 @@ export default {
     return {
       search: "",
       headers: [
-        { text: "Name", value: "name" },
+        { text: "Name", value: "name", divider: true },
         {
           text: "ISBN",
           align: "start",
           sortable: true,
           value: "isbn",
+           divider: true 
         },
-        { text: "Authors", value: "authors" },
-        { text: "Pages", value: "email" },
-        { text: "Country", value: "country" },
-        { text: "Released", value: "released" },
+        { text: "Authors", value: "authors",  divider: true  },
+        { text: "Pages", value: "email",  divider: true  },
+        { text: "Country", value: "country",  divider: true  },
+        { text: "Released", value: "released",  divider: true  },
       ],
       books: [],
       isLoading: true,
@@ -76,4 +78,6 @@ export default {
 };
 </script>
 <style>
+
+
 </style>
