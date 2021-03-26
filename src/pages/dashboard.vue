@@ -35,6 +35,15 @@
           }}</span>
         </template>
       </v-data-table>
+      <v-snackbar v-model="isError" :timeout="2000" top right>
+        {{ message }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="isError = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-card>
   </v-container>
 </template>
@@ -60,6 +69,8 @@ export default {
       ],
       books: [],
       isLoading: true,
+      isError: true,
+      message: "",
     };
   },
   components: {
@@ -76,6 +87,7 @@ export default {
         this.books = data;
         this.isLoading = false;
       } catch (error) {
+        this.message = error
         console.log(error);
       }
     },
