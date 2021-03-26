@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 
 export default {
   name: "App",
@@ -16,9 +16,6 @@ export default {
     Dashboard,
   },
 
-  data: () => ({
-    //
-  }),
 };
 </script>
 <style>
@@ -50,7 +47,7 @@ export default {
 .v-data-table > .v-data-table__wrapper > table > tbody > tr > th,
 .v-data-table > .v-data-table__wrapper > table > thead > tr > th,
 .v-data-table > .v-data-table__wrapper > table > tfoot > tr > th {
-  font-size: 1rem !important;
+  font-size: .9rem !important;
 }
 th {
   border-top: 1px solid #dddddd;

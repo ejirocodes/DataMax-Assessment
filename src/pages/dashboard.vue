@@ -1,7 +1,6 @@
 <template >
   <v-container class="dashboard">
     <PreLoader v-if="isLoading" />
-
     <v-card class="card-table">
       <v-row class="px-4 pt-4 pb-2">
         <v-spacer></v-spacer>
@@ -24,19 +23,16 @@
         :items-per-page="10"
         :search="search"
       >
-      <!-- <template v-slot:[`item.country`]="{ item }">
-          <v-btn
-            x-small
-            elevation="0"
-            color="primary"
-            @click="guessNationality(item)"
-          >
-            See Nationality
-          </v-btn>
-        </template> -->
-
         <template v-slot:[`item.released`]="{ item }">
-          <span>{{ new Date(item.released).getDate() + " " +  new Date(item.released).toLocaleString('default', { month: 'short' }) + ", " +  new Date(item.released).getFullYear()}}</span>
+          <span>{{
+            new Date(item.released).getDate() +
+            " " +
+            new Date(item.released).toLocaleString("default", {
+              month: "short",
+            }) +
+            ", " +
+            new Date(item.released).getFullYear()
+          }}</span>
         </template>
       </v-data-table>
     </v-card>
