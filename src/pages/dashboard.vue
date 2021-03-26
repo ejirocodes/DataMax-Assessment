@@ -4,9 +4,6 @@
 
     <v-card class="card-table">
       <v-row class="px-4 pt-4 pb-2">
-        <v-col cols="12" md="6">
-          <h1>Event Attendees</h1>
-        </v-col>
         <v-spacer></v-spacer>
         <v-col cols="12" md="6">
           <v-text-field
@@ -23,53 +20,15 @@
       </v-row>
       <v-data-table
         :headers="headers"
-        :items="attendees"
+        :items="books"
         :items-per-page="10"
         :search="search"
       >
-        <template v-slot:[`item.country`]="{ item }">
-          <v-btn
-            x-small
-            elevation="0"
-            color="primary"
-            @click="guessNationality(item)"
-          >
-            See Nationality
-          </v-btn>
-        </template>
-        <template v-slot:[`item.gender`]="{ item }">
-          <v-chip :color="getColor(item.gender)" outlined small>
-            {{ item.gender }}
-          </v-chip>
-        </template>
       </v-data-table>
-      <div class="text-center">
-        <v-snackbar
-          v-model="findNationality"
-          :timeout="timeout"
-          :color="color"
-          top
-          right
-        >
-          {{ text }}
-
-          <template v-slot:action="{ attrs }">
-            <v-btn
-              color="#fff"
-              text
-              v-bind="attrs"
-              @click="findNationality = false"
-            >
-              Close
-            </v-btn>
-          </template>
-        </v-snackbar>
-      </div>
     </v-card>
   </v-container>
 </template>
 <script>
-import attendees from "../data/attendees.json";
 import countries from "../data/countries";
 import PreLoader from "../components/PreLoader";
 
@@ -78,18 +37,19 @@ export default {
     return {
       search: "",
       headers: [
-        { text: "No", value: "id" },
+        { text: "Name", value: "name" },
         {
-          text: "Name",
+          text: "ISBN",
           align: "start",
           sortable: true,
-          value: "name",
+          value: "isbn",
         },
-        { text: "Gender", value: "gender" },
-        { text: "Email", value: "email" },
-        { text: "Nationality", value: "country" },
+        { text: "Authors", value: "authors" },
+        { text: "Pages", value: "email" },
+        { text: "Country", value: "country" },
+        { text: "Released", value: "released" },
       ],
-      attendees,
+      books: [],
       countries,
       nationality: null,
       findNationality: false,
@@ -103,6 +63,16 @@ export default {
     PreLoader,
   },
   methods: {
+    async getBooks() {
+      try {
+        const res = await fetch(`https://www.anapioficeandfire.com/api/books?page=1`);
+        const data = await res.json();
+        console.log(data);
+        this.books = data
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async guessNationality(item) {
       try {
         const res = await fetch(`https://api.nationalize.io?name=${item.name}`);
@@ -156,6 +126,7 @@ export default {
     this.isLoading = true;
   },
   mounted() {
+    this.getBooks()
     setTimeout(() => {
       this.isLoading = false;
     }, 1400);
