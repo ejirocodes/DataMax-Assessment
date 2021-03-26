@@ -79,13 +79,18 @@ export default {
   methods: {
     async getBooks() {
       try {
+        // Fetch all books from the API
         const res = await fetch(
           `https://www.anapioficeandfire.com/api/books?pageSize=12`
         );
+        // Convert data to usable format
         const data = await res.json();
+        // Update the state with data from the API
         this.books = data;
+        // Turn preloader off when data is returned
         this.isLoading = false;
       } catch (error) {
+        // Display error message when an HTTP error occurs
         this.isError = true;
         this.message = error
       }
