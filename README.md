@@ -1,4 +1,4 @@
-# data-max-assessment
+# DataMax frontend Assessment
 
 ## Project setup
 ```
@@ -47,6 +47,6 @@ If you were given another day to work on this, how would you spend it? What if y
 I would have approached it quite differently. First I will use a CSS UI library that is more lightweight and modular like Chakra UI to reduce bundle size which will in turn improve performance. I would have made the UI more custom to match the Tix Africa color scheme and also write tests with Jasmine and ask for a thorough code review from engineers more experienced than me and audited the app with Lighthouse.
 
 ## Below are links to the prototype
-### View the prototype on Netlify
+### View the prototype on [Netlify](https://data-max-assessment-ejiro-asiuwhu.netlify.app)
 
 ### View source code on [GitHub](https://github.com/ejirocodes/DataMax-Assessment)
