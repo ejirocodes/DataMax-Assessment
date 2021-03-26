@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/dashboard";
 
 export default {
   name: "App",
