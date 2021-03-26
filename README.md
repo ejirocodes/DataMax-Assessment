@@ -39,13 +39,6 @@ In a case where an error occur, I gracefully handle the situation by displaying 
 The project was bootstrapped with Vue.js and I choose the Vuetify UI component library because it literally gives me exactly what I needed to build this prototype rapidly.
 The built-in JavaScript fetch API was used for API calls in favour of Axios or jQuery to reduce bundle size and improve performance. The prototype was hosted on Netlify because it makes deploying frontend apps fast and it also has a built-in continuous integration system.
 
-
-## Extra Features
-I added a sort feature and also.
-
-If you were given another day to work on this, how would you spend it? What if you were given a month? 
-I would have approached it quite differently. First I will use a CSS UI library that is more lightweight and modular like Chakra UI to reduce bundle size which will in turn improve performance. I would have made the UI more custom to match the Tix Africa color scheme and also write tests with Jasmine and ask for a thorough code review from engineers more experienced than me and audited the app with Lighthouse.
-
 ## Below are links to the prototype
 ### View the prototype on [Netlify](https://data-max-assessment-ejiro-asiuwhu.netlify.app)
 
