@@ -24,8 +24,19 @@
         :items-per-page="10"
         :search="search"
       >
-        <template v-slot:books="{ item }">
-          <span>{{ new Date(item.released).toLocaleString() }}</span>
+      <!-- <template v-slot:[`item.country`]="{ item }">
+          <v-btn
+            x-small
+            elevation="0"
+            color="primary"
+            @click="guessNationality(item)"
+          >
+            See Nationality
+          </v-btn>
+        </template> -->
+
+        <template v-slot:[`item.released`]="{ item }">
+          <span>{{ new Date(item.released).getDate() + " " +  new Date(item.released).toLocaleString('default', { month: 'short' }) + ", " +  new Date(item.released).getFullYear()}}</span>
         </template>
       </v-data-table>
     </v-card>
