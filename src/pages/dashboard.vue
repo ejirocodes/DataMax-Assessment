@@ -35,12 +35,12 @@
           }}</span>
         </template>
       </v-data-table>
-      <v-snackbar v-model="isError" :timeout="2000" top right color="red" elevation="0">
+      <v-snackbar v-model="isError" :timeout="30000" top right color="red" elevation="0">
         {{ message }}
 
         <template v-slot:action="{ attrs }">
-          <v-btn color="black" text v-bind="attrs" @click="isError = false" >
-            Close
+          <v-btn color="black" text v-bind="attrs" @click="reload()" >
+            Try again
           </v-btn>
         </template>
       </v-snackbar>
@@ -90,6 +90,10 @@ export default {
         this.message = error
       }
     },
+    reload() {
+      this.isError = false;
+      this.getBooks();
+    }
   },
   mounted() {
     this.getBooks();
