@@ -35,11 +35,11 @@
           }}</span>
         </template>
       </v-data-table>
-      <v-snackbar v-model="isError" :timeout="2000" top right>
+      <v-snackbar v-model="isError" :timeout="2000" top right color="red" elevation="0">
         {{ message }}
 
         <template v-slot:action="{ attrs }">
-          <v-btn color="blue" text v-bind="attrs" @click="isError = false">
+          <v-btn color="black" text v-bind="attrs" @click="isError = false" >
             Close
           </v-btn>
         </template>
@@ -69,7 +69,7 @@ export default {
       ],
       books: [],
       isLoading: true,
-      isError: true,
+      isError: false,
       message: "",
     };
   },
@@ -83,12 +83,11 @@ export default {
           `https://www.anapioficeandfire.com/api/books?pageSize=12`
         );
         const data = await res.json();
-        console.log({ data });
         this.books = data;
         this.isLoading = false;
       } catch (error) {
+        this.isError = true;
         this.message = error
-        console.log(error);
       }
     },
   },
