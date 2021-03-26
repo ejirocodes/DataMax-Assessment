@@ -5,7 +5,7 @@
     <v-card class="card-table">
       <v-row class="px-4 pt-4 pb-2">
         <v-spacer></v-spacer>
-        <v-col cols="12" md="4">
+        <v-col cols="12" md="3">
           <v-text-field
             v-model="search"
             outlined
@@ -23,8 +23,10 @@
         :items="books"
         :items-per-page="10"
         :search="search"
-        :divider="true"
       >
+        <template v-slot:books="{ item }">
+          <span>{{ new Date(item.released).toLocaleString() }}</span>
+        </template>
       </v-data-table>
     </v-card>
   </v-container>
@@ -43,12 +45,11 @@ export default {
           align: "start",
           sortable: true,
           value: "isbn",
-           divider: true 
+          divider: true,
         },
-        { text: "Authors", value: "authors",  divider: true  },
-        { text: "Pages", value: "email",  divider: true  },
-        { text: "Country", value: "country",  divider: true  },
-        { text: "Released", value: "released",  divider: true  },
+        { text: "Authors", value: "authors", divider: true },
+        { text: "Country", value: "country", divider: true },
+        { text: "Released", value: "released", divider: true },
       ],
       books: [],
       isLoading: true,
@@ -78,6 +79,4 @@ export default {
 };
 </script>
 <style>
-
-
 </style>

@@ -26,10 +26,16 @@ export default {
 .v-application {
   font-family: "Lato", sans-serif !important;
 }
+.v-sheet.v-card:not(.v-sheet--outlined) {
+  box-shadow: none !important;
+}
+.v-data-table {
+  border: 1px solid #dddddd;
+  box-shadow: none !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
 .card-table {
   margin: 4rem 0 5rem !important;
-  box-shadow: 0 14px 50px -12px rgba(0, 0, 0, 0.25) !important;
-  border: 1px solid;
 }
 .v-btn__content {
   text-transform: none;
